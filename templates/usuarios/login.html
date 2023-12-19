@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+<div class="content">
+	<div class="grand-title" id="servicio">
+	  <h4 data-ix="slowfade-scroll-bigs">INICIAR SESIÓN</h4>
+	</div>
+  </div>
+	<main>
+			<div class="login-box">
+				<h2>Iniciar sesión</h2>
+				<form method="POST">{%csrf_token%}
+					{{form.errors}}
+				<div class="user-box">
+					<input type="text" name="username" required="">
+					<div class="label-div">Usuario</div>
+				</div>
+				<div class="user-box">
+					<input type="password" name="password" required="">
+					<div class="label-div">Contraseña</div>
+				</div>
+				<a>
+					<span></span>
+					<span></span>
+					<span></span>
+					<span></span>
+					<button type="submit" class="btn-login">Iniciar sesión</button>
+				</a>
+				</form>
+				<a href="{% url 'usuarios:registro' %}">
+					<span></span>
+					<span></span>
+					<span></span>
+					<span></span>
+					<button class="btn-login">Registrarse</button>
+				</a>
+				
+			</div>
+		</main>
+{% endblock %}

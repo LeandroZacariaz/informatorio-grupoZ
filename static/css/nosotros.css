@@ -1,0 +1,55 @@
+.historia h3{
+    width: 1250px;
+    text-align: center;
+    background-color: black;
+    color: #fff;
+}
+
+.historia p{
+    color: #fff;
+}
+
+.equipo h3{
+    width: 1250px;
+    text-align: center;
+    background-color: black;
+    color: #fff;
+}
+
+.equipo ul{
+    font-size: 20px;
+    color: #fff;
+}
+
+.equipo ul li{
+    font-size: 15px;
+    padding-left: 10px;
+}
+
+.contacto h3{
+    width: 1250px;
+    text-align: center;
+    background-color: black;
+    color: #fff;
+}
+
+.contacto p{
+    color: #fff;
+}
+
+.contacto ul{
+    text-align: center;
+    color: #fff;
+}
+
+.contacto ul li{
+    display: inline-block;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.contacto ul a {
+    font-size: 50px;
+    color: #fff;
+}
+

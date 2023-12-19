@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block titulo %} - NOTICIAS{% endblock titulo %}
+
+
+{% block contenido %}
+	<div class="content">
+		<div class="grand-title" id="servicio">
+		  <h4 data-ix="slowfade-scroll-bigs">NOTICIAS</h4>
+		</div>
+	</div>
+		<!-----------------------FILTRADO------------------------------>
+		<div class="filtrar">
+			<div class="filtrar-cat">
+				<div class="caja-botones">
+					<a  id="boton" onclick="mostrarCat();" >
+						<span></span>
+						<span></span>
+						<span></span>
+						<span></span>
+						FILTRAR POR CATEGORÍAS
+					</a>
+					<a  id="boton" onclick="mostrarAlf();">
+						<span></span>
+						<span></span>
+						<span></span>
+						<span></span>
+						FILTRAR ALFÁBETICAMENTE
+					</a>
+					<a  id="boton" onclick="mostrarFec();">
+						<span></span>
+						<span></span>
+						<span></span>
+						<span></span>
+						FILTRAR POR FECHA
+					</a>
+					<div id="cat-ocultas">
+						<a  href="{% url 'noticias:listar' %}" onclick="guardarPosicionDesplazamiento();">TODAS</a>
+						{% for cat in categorias %}
+						<a  href="?id={{cat.pk}}">{{cat.nombre}}</a>
+						{% endfor %}
+						<a  id="boton2" onclick="ocultarCat();">OCULTAR FILTROS</a>
+					</div>
+					<div id="alf-ocultas">
+						<a  href="?id={{cat.pk}}&orden_asc=alfabetico">ORDEN A-Z</a>
+						<a  href="?id={{cat.pk}}&orden_desc=alfabetico">ORDEN Z-A</a>
+						<a  id="boton2" onclick="ocultarAlf();">OCULTAR FILTROS</a>
+					</div>
+					<div id="fechas-ocultas">
+						<a  href="?id={{cat.pk}}&fecha_asc=fecha">FECHA ASC</a>
+						<a  href="?id={{cat.pk}}&fecha_desc=fecha">FECHA DESC</a>
+						<a  id="boton2" onclick="ocultarFec();">OCULTAR FILTROS</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+	<section class="game-section">
+		<div class="owl-carousel custom-carousel owl-theme">
+		{% for noti in noticias %}
+		  <div class="item" style="background-image: url({{noti.imagen.url}});">
+			<div class="item-desc">
+				<h1><a class="" href="{% url 'noticias:detalle' noti.pk %}">{{noti.titulo}}</a></h1>
+			</div>
+		  </div>
+		{% endfor %}
+		</div>
+	</section>
+
+{% endblock contenido %}
+

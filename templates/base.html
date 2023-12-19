@@ -1,0 +1,71 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>GRUPO Z{% block titulo %}{% endblock titulo %}</title>
+	<link rel="shortcut icon" href="{% static 'img/5712418.ico' %}">
+	<link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+	<link rel="stylesheet" href="https://codepen.io/jsulpis/pen/ExdxLgM.scss">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}"/>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/footer.css' %}"/>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/botones.css' %}"/>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/nosotros.css' %}"/>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/detalle-noticia.css' %}"/>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/comentarios.css' %}"/>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}"/>
+</head>
+<body>
+	<section class="photo" id="inicio">
+  
+		<div class="nav" id="sticker">
+		<label for="toggle">&#9776</label>
+		<input type="checkbox" id="toggle" />
+		<div class="menu">
+		  <h5 class="logo"><img src="{% static 'img/logo-sf.png' %}" width="70px" height="70px" ></h5>
+		  <a href="{% url 'home' %}">INICIO</a>
+		  <a href="{% url 'noticias:listar' %}">NOTICIAS</a>
+		  <a href="{% url 'nosotros' %}">NOSOTROS</a>
+		  {% if user.is_authenticated %}
+		  	<a class="nombre">Hola, {{ user.username }}</a>
+		  	<a href="{% url 'logout' %}">CERRAR SESIÓN</a>
+		  {% else %}
+			<a href="{% url 'login' %}">INICIAR SESIÓN</a>
+			<a href="{% url 'usuarios:registro' %}">REGISTRARSE</a>
+		  {% endif %}
+		</div>
+	  </div>
+	  <div class="photo-text">
+		<h4 data-ix="skype">INFORMATORIO</h4>
+		<p data-ix="subtitle-hero-up">GRUPO Z</p>
+		  </div>
+		<div class="overlay"></div>
+	</section>
+	<div class="fondo">
+		{% block contenido %}
+								
+		{% endblock contenido %}
+	</div>
+	<footer>
+		<div class="bottom-bar">
+			TODOS LOS DERECHOS RESERVADOS © 2023 | <a href="">GRUPO Z</a> | <a href="">TÉRMINOS Y SERVICIOS</a>
+		</div>
+	  </footer>
+	<!--DEFINO FUNCION MOSTRAR BOTON-->
+	<script type="text/javascript" src="{% static 'js/botones.js' %}"></script>
+	<!--DEFINO FUNCION MOSTRAR BOTON-->
+	<script type="text/javascript" src="{% static 'js/mover-mouse.js' %}"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="https://daks2k3a4ib2z.cloudfront.net/588509aba93e9ed75d02ed68/js/knife-fox-playground.7c3e6668d.js"></script>
+	<script src="https://fractalhost.com/landing1/js/jquery.sticky.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+	<script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+</body>
+
+</html>

@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block titulo %} - NOTICIAS{% endblock titulo %}
+
+
+{% block contenido %}
+	<div class="content">
+		<div class="grand-title" id="servicio">
+		<h4 data-ix="slowfade-scroll-bigs">NOTICIAS</h4>
+		</div>
+	</div>
+	<main>
+	<article class="movie-card">
+		<img class="imagen-noticia" src="{{noticia.imagen.url}}" />
+	  
+		<div class="contenido">
+		  <h1>{{noticia.titulo}}</h1>
+	  
+		  <div class="infos">
+			<span>·&nbsp;&nbsp;{{noticia.categoria_noticia}}&nbsp;&nbsp;·&nbsp;&nbsp;{{noticia.fecha}}&nbsp;&nbsp;·</span>
+		  </div>
+		</div>
+	  </article>
+	  <br>
+	  <br>
+	  <div class="cuerpo-noticia">
+		<p>{{noticia.cuerpo}}</p>
+	</div>
+	<br><br>
+	<div class="linea-separadora"></div>
+	<div class="comentarios">
+		<h3 class="comment-titulo">COMENTARIOS</h3>
+		<div class="caja-comentario">
+			<form method="POST" action="{% url 'noticias:comentar' %}" >{% csrf_token %}
+				<textarea name="comentario" maxlength="1500" placeholder="Escribe tu comentario.."> </textarea>
+				<input type="text" name="id_noticia" value="{{noticia.pk}}" hidden=""> 
+				<button type="submit" class="btn-guardar">GUARDAR</button>
+			</form>
+		</div>
+	</div>
+	<!-- Contenedor Principal -->
+	<div class="comments-container">
+
+		<ul id="comments-list" class="comments-list">
+			{% for com in comentarios %}
+			<li>
+				<div class="comment-main-level">
+					<div class="comment-box">
+						<div class="comment-head">
+							<h6 class="comment-name by-author"><a>{{com.usuario}}</a></h6>
+							<span>{{com.fecha}}</span>
+							{% if user == com.usuario or user.pk == 1%}
+							<a class="icono" href="{% url 'noticias:eliminar_comentario' com.id %}" onclick='guardarPosicionDesplazamiento();'><i class="fa fa-trash"></com></i></a>
+							<a class="icono" onclick='guardarPosicionDesplazamiento(); mostrarEdit("com{{com.id}}");'><i class=" fa fa-pencil" ></com></i></a>
+							{% endif %}
+						</div> 
+						<div class="comment-content">
+							{{com.texto}}
+						</div>
+						<div class="caja-comentario" id="com{{com.id}}" style="display: none;">
+								<form method="POST" action="{% url 'noticias:modificar_comentario' com.id %}" >{% csrf_token %}
+									<textarea name="comentarioedit" maxlength="1500" placeholder="Escribe tu comentario..">{{com.texto}}</textarea>
+									<input type="text" name="id_noticia" value="{{noticia.pk}}" hidden=""> 
+									<button type="submit" class="btn-guardar">EDITAR</button>
+								</form>
+						</div>
+					</div>
+				</div>
+			</li>
+			{% endfor %}
+		</ul>
+	</div>
+	</main>
+
+{% endblock contenido %}
+

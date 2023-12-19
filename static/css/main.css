@@ -764,6 +764,7 @@ button {
   background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
 }
 .game-section .item-desc {
+  font-size: 5px;
   padding: 0 24px 12px;
   color: #fff;
   position: relative;
@@ -774,6 +775,8 @@ button {
   transition: all 0.4s ease-in-out;
   -webkit-transition: all 0.4s ease-in-out;
 }
+
+
 .game-section .item.active .item-desc {
   transform: none;
   -webkit-transform: none;

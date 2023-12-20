@@ -7,7 +7,7 @@ class RegistroForm(UserCreationForm):
     email = forms.EmailField(widget=forms.TextInput(attrs={
         "type":"email",
         "required": "true"
-    }))
+    }), label="Email")
     first_name = forms.CharField(widget=forms.TextInput(attrs={
         "type":"text",
         "required": "true"
